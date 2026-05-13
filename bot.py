@@ -377,7 +377,7 @@ def main():
                 CallbackQueryHandler(choose_service),
             ],
             COLLECTING_PDFS: [
-                MessageHandler(filters.Document.ALL | filters.PDF, receive_pdf),
+                MessageHandler(filters.Document.ALL, receive_pdf),
                 CommandHandler("done", done),
                 CallbackQueryHandler(cancel, pattern="cancel"),
             ],
