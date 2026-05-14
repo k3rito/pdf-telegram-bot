@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from database.db import Database
-from database.models import UserProfile
+from database.models.user_profile import UserProfile
 
 
 async def get_profile(db: Database, user_id: int) -> UserProfile:
