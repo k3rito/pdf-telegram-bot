@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from datetime import datetime, timezone
+
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -18,7 +20,7 @@ class UserRepository(Repository):
     async def ensure(self, user_id: int, username: str) -> User:
         user = await self.get(user_id)
         if user is None:
-            user = User(user_id=user_id, username=username, banned=False)
+            user = User(user_id=user_id, username=username, joined_at=datetime.now(timezone.utc), banned=False)
             self.session.add(user)
         else:
             user.username = username
