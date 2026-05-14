@@ -93,7 +93,7 @@ class TaskManager:
         message = await self._safe_send_message(
             bot,
             task.chat_id,
-            "\u23f3 \u0628\u062f\u0621 \u0627\u0644\u0645\u0639\u0627\u0644\u062c\u0629...",
+            "بدء المعالجة...",
             reply_to_message_id=task.reply_to_message_id,
         )
         progress = asyncio.create_task(self.progress_manager.animate(message))
@@ -114,7 +114,7 @@ class TaskManager:
         await self._safe_send_message(
             bot,
             task.chat_id,
-            "\ud83d\udd01 \u0627\u062e\u062a\u0631 \u062e\u062f\u0645\u0629 \u0623\u062e\u0631\u0649:",
+            "اختر خدمة أخرى:",
             reply_markup=main_menu(is_admin=is_admin, ocr_enabled=ocr_enabled),
             reply_to_message_id=task.reply_to_message_id,
         )
@@ -147,13 +147,13 @@ class TaskManager:
     async def _notify_error(self, application, task: Task, exc: Exception) -> None:
         bot = application.bot
         message = (
-            "\u274c \u0641\u0634\u0644 \u062a\u0646\u0641\u064a\u0630 \u0627\u0644\u0639\u0645\u0644\u064a\u0629.\n\n"
-            "\ud83d\udccc \u0627\u0644\u0633\u0628\u0628 \u0627\u0644\u0645\u062d\u062a\u0645\u0644:\n"
-            "\u0627\u0644\u0645\u0644\u0641 \u062a\u0627\u0644\u0641 \u0623\u0648 \u0645\u062d\u0645\u064a.\n\n"
-            "\ud83d\udee0 \u062d\u0627\u0648\u0644 \u0631\u0641\u0639 \u0645\u0644\u0641 \u0622\u062e\u0631."
+            "فشل تنفيذ العملية.\n\n"
+            "السبب المحتمل:\n"
+            "الملف تالف أو محمي.\n\n"
+            "حاول رفع ملف آخر."
         )
         if isinstance(exc, RuntimeError):
-            message = f"\u26a0\ufe0f {exc}"
+            message = str(exc)
         await self._safe_send_message(
             bot,
             task.chat_id,
@@ -166,7 +166,7 @@ class TaskManager:
         await self._safe_send_message(
             bot,
             task.chat_id,
-            "\ud83d\udd01 \u0627\u062e\u062a\u0631 \u062e\u062f\u0645\u0629 \u0623\u062e\u0631\u0649:",
+            "اختر خدمة أخرى:",
             reply_markup=main_menu(is_admin=is_admin, ocr_enabled=ocr_enabled),
             reply_to_message_id=task.reply_to_message_id,
         )

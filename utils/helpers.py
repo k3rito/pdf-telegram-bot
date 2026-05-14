@@ -3,22 +3,22 @@ from __future__ import annotations
 from pathlib import Path
 
 SERVICE_TITLES = {
-    "merge": "\ud83d\udcce \u062f\u0645\u062c",
-    "split": "\u2702\ufe0f \u062a\u0642\u0633\u064a\u0645",
-    "compress": "\ud83d\udddc\ufe0f \u0636\u063a\u0637",
-    "extract_text": "\ud83d\udcdd \u0627\u0633\u062a\u062e\u0631\u0627\u062c \u0646\u0635",
-    "extract_images": "\ud83d\uddbc\ufe0f \u0627\u0633\u062a\u062e\u0631\u0627\u062c \u0635\u0648\u0631",
-    "images_to_pdf": "\ud83d\uddbc\ufe0f\u27a1\ufe0f\ud83d\udcc4 \u0635\u0648\u0631 \u0627\u0644\u0649 PDF",
-    "pdf_to_word": "\ud83d\udcc4\u27a1\ufe0f\ud83d\udcdd PDF \u0627\u0644\u0649 Word",
-    "pdf_to_excel": "\ud83d\udcca\u27a1\ufe0f PDF \u0627\u0644\u0649 Excel",
-    "ocr": "\ud83d\udd0d OCR",
-    "encrypt_pdf": "\ud83d\udd12 \u062d\u0645\u0627\u064a\u0629 PDF",
-    "decrypt_pdf": "\ud83d\udd13 \u0627\u0632\u0627\u0644\u0629 \u062d\u0645\u0627\u064a\u0629",
-    "rotate_pdf": "\ud83d\udd03 \u062a\u062f\u0648\u064a\u0631 \u0635\u0641\u062d\u0627\u062a",
-    "watermark_pdf": "\ud83c\udf0a \u0639\u0644\u0627\u0645\u0629 \u0645\u0627\u0626\u064a\u0629",
-    "sign_pdf": "\u270d\ufe0f \u062a\u0648\u0642\u064a\u0639",
-    "pdf_to_images": "\ud83d\uddbc\ufe0f PDF \u0627\u0644\u0649 \u0635\u0648\u0631",
-    "reorder_pages": "\ud83e\udde9 \u0627\u0639\u0627\u062f\u0629 \u062a\u0631\u062a\u064a\u0628",
+    "merge": "دمج",
+    "split": "تقسيم",
+    "compress": "ضغط",
+    "extract_text": "استخراج نص",
+    "extract_images": "استخراج صور",
+    "images_to_pdf": "صور إلى PDF",
+    "pdf_to_word": "PDF إلى Word",
+    "pdf_to_excel": "PDF إلى Excel",
+    "ocr": "OCR",
+    "encrypt_pdf": "حماية PDF",
+    "decrypt_pdf": "إزالة حماية",
+    "rotate_pdf": "تدوير صفحات",
+    "watermark_pdf": "علامة مائية",
+    "sign_pdf": "توقيع",
+    "pdf_to_images": "PDF إلى صور",
+    "reorder_pages": "إعادة ترتيب",
 }
 
 
