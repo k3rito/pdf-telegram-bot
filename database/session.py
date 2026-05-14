@@ -22,10 +22,8 @@ def _database_url(settings: AppSettings) -> str:
     return f"sqlite+aiosqlite:///{settings.db_path.as_posix()}"
 
 
-@lru_cache(maxsize=1)
-def get_engine(settings: AppSettings | None = None) -> AsyncEngine:
-    settings = settings or get_settings()
-    url = _database_url(settings)
+@lru_cache(maxsize=8)
+def _build_engine(url: str) -> AsyncEngine:
     engine_kwargs = {"echo": False, "pool_pre_ping": True}
     if url.startswith("sqlite"):
         engine_kwargs["connect_args"] = {"check_same_thread": False}
@@ -34,10 +32,20 @@ def get_engine(settings: AppSettings | None = None) -> AsyncEngine:
     return create_async_engine(url, **engine_kwargs)
 
 
-@lru_cache(maxsize=1)
-def get_sessionmaker(settings: AppSettings | None = None) -> async_sessionmaker[AsyncSession]:
-    engine = get_engine(settings)
+def get_engine(settings: AppSettings | None = None) -> AsyncEngine:
+    settings = settings or get_settings()
+    return _build_engine(_database_url(settings))
+
+
+@lru_cache(maxsize=8)
+def _build_sessionmaker(url: str) -> async_sessionmaker[AsyncSession]:
+    engine = _build_engine(url)
     return async_sessionmaker(engine, expire_on_commit=False)
+
+
+def get_sessionmaker(settings: AppSettings | None = None) -> async_sessionmaker[AsyncSession]:
+    settings = settings or get_settings()
+    return _build_sessionmaker(_database_url(settings))
 
 
 @asynccontextmanager
