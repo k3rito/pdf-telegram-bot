@@ -19,6 +19,9 @@ build/
 *.zip
 *.tmp
 temp/
+storage/
+logs/
+database/*.db
 
 # بيئات افتراضية
 venv/

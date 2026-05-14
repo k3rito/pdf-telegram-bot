@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pdfbot
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pdfbot
+  template:
+    metadata:
+      labels:
+        app: pdfbot
+    spec:
+      containers:
+        - name: pdfbot
+          image: pdfbot:latest
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - secretRef:
+                name: pdfbot-secrets
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 8080
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 8080
+          # TODO(PRODUCTION): split bot worker and API into dedicated deployments and wire Redis/PostgreSQL services.

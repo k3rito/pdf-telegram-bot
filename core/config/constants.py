@@ -1,0 +1,26 @@
+from __future__ import annotations
+
+from enum import StrEnum
+
+
+class EnvironmentName(StrEnum):
+    development = "development"
+    staging = "staging"
+    production = "production"
+
+
+DEFAULT_PREFIX_TOKEN = "@pdf"
+DEFAULT_RATE_LIMIT_COUNT = 5
+DEFAULT_RATE_LIMIT_WINDOW = 60
+DEFAULT_REPLY_DELETE_SECONDS = 20
+DEFAULT_MAX_FILE_SIZE = 50 * 1024 * 1024
+DEFAULT_MAX_FILES_PER_SESSION = 20
+DEFAULT_MAX_TOTAL_SIZE = 200 * 1024 * 1024
+DEFAULT_WORKER_COUNT = 2
+DEFAULT_TASK_TIMEOUT = 240
+DEFAULT_TASK_RETRIES = 1
+DEFAULT_CLEANUP_INTERVAL = 900
+DEFAULT_LOG_LEVEL = "INFO"
+DEFAULT_LANG = "ar"
+DEFAULT_QUEUE_BACKEND = "memory"
+DEFAULT_DB_BACKEND = "sqlite"

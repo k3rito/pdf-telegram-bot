@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  pdfbot:
+    build: .
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ./database:/app/database
+      - ./storage:/app/storage
+      - ./temp:/app/temp
+      - ./logs:/app/logs
+    networks:
+      - pdfnet
+
+networks:
+  pdfnet:
+    driver: bridge
+
+volumes:
+  database: {}
+  storage: {}
+  temp: {}
+  logs: {}
